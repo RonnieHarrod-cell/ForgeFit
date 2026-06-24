@@ -41,28 +41,28 @@ export default function AuthForm() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0d0d0d] flex items-center justify-center px-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-[#0d0d0d] flex items-center justify-center px-4 py-8">
+      <div className="w-full max-w-sm">
         {/* Logo */}
-        <div className="flex items-center justify-center gap-3 mb-8">
+        <div className="flex items-center justify-center gap-2.5 mb-8">
           <div className="bg-orange-500 p-2.5 rounded-xl">
-            <Dumbbell className="w-6 h-6 text-white" />
+            <Dumbbell className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
           </div>
-          <span className="text-white text-2xl font-bold tracking-tight">ForgeFit</span>
+          <span className="text-white text-xl sm:text-2xl font-bold tracking-tight">ForgeFit</span>
         </div>
 
         {/* Card */}
-        <div className="bg-[#1a1a1a] border border-white/10 rounded-2xl p-8">
-          <h1 className="text-white text-xl font-semibold mb-1">
+        <div className="bg-[#1a1a1a] border border-white/10 rounded-2xl p-6 sm:p-8">
+          <h1 className="text-white text-lg sm:text-xl font-semibold mb-1">
             {mode === "login" ? "Welcome back" : "Create your account"}
           </h1>
-          <p className="text-white/40 text-sm mb-6">
+          <p className="text-white/40 text-sm mb-5">
             {mode === "login"
               ? "Log in to access your workout plans."
               : "Start building smarter workouts with AI."}
           </p>
 
-          <div className="space-y-4">
+          <div className="space-y-3.5">
             {mode === "register" && (
               <div>
                 <label className="text-white/60 text-xs mb-1.5 block">Full Name</label>
@@ -119,7 +119,7 @@ export default function AuthForm() {
           <button
             onClick={handleSubmit}
             disabled={loading}
-            className="mt-6 w-full bg-orange-500 hover:bg-orange-400 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm"
+            className="mt-5 w-full bg-orange-500 hover:bg-orange-400 active:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm"
           >
             {loading && <Loader2 className="w-4 h-4 animate-spin" />}
             {mode === "login" ? "Log in" : "Create account"}

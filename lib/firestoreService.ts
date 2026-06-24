@@ -142,3 +142,16 @@ export async function updateCustomExercise(
 export async function deleteCustomExercise(uid: string, exerciseId: string): Promise<void> {
   await deleteDoc(doc(db, "users", uid, "exercises", exerciseId));
 }
+
+
+// ─── Leaderboard ──────────────────────────────────────────────────────────────
+
+import { query as fsQuery, orderBy as fsOrderBy, limit, getDocs as fsGetDocs, collection as fsCollection } from "firebase/firestore";
+import { LeaderboardEntry } from "@/lib/gamification";
+
+export async function getLeaderboard(top = 20): Promise<LeaderboardEntry[]> {
+  const ref = fsCollection(db, "leaderboard");
+  const q = fsQuery(ref, fsOrderBy("xp", "desc"), limit(top));
+  const snap = await fsGetDocs(q);
+  return snap.docs.map((d) => d.data() as LeaderboardEntry);
+}
